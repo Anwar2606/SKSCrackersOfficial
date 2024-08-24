@@ -268,7 +268,7 @@
           doc.setFont('helvetica', 'bold');
           doc.text('Email:', 24, 45);
           doc.setFont('helvetica', 'normal');
-          doc.text('hariprakashtex@gmail.com', 35, 45);
+          doc.text('skscrackers937@gmail.com', 35, 45);
           doc.setFont('helvetica', 'bold');
           doc.text('State:', 24, 52);
           doc.setFont('helvetica', 'normal');
@@ -701,7 +701,7 @@ doc.save(`invoice_${invoiceNumber}_${copyType}.pdf`);
           doc.setFont('helvetica', 'bold');
           doc.text('Email:', 24, 45);
           doc.setFont('helvetica', 'normal');
-          doc.text('hariprakashtex@gmail.com', 35, 45);
+          doc.text('skscrackers937@gmail.com', 35, 45);
           doc.setFont('helvetica', 'bold');
           doc.text('State:', 24, 52);
           doc.setFont('helvetica', 'normal');
@@ -1183,6 +1183,7 @@ drawPageBorder();
                 className="search-input"
               />
                  <select  className="custom-select1" onChange={handleCategoryChange} value={category}>
+                 <option value="">All Products</option>
                  <option value="SINGLE SOUND CRACKERS">SINGLE SOUND CRACKERS</option>
               <option value="SPARKLERS">SPARKLERS</option>
               <option value="GROUND CHAKKARS">GROUND CHAKKARS</option>

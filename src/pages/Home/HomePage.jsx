@@ -193,7 +193,7 @@ const Homepage = () => {
   doc.setFont('helvetica', 'bold');
   doc.text('Email:', 24, 45);
   doc.setFont('helvetica', 'normal');
-  doc.text('hariprakashtex@gmail.com', 35, 45);
+  doc.text('skscrackers937@gmail.com', 35, 45);
   doc.setFont('helvetica', 'bold');
   doc.text('State:', 24, 52);
   doc.setFont('helvetica', 'normal');
