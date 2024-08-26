@@ -61,8 +61,8 @@
             if (searchTerm) {
               filtered = filtered.filter(product => {
                 const productName = product.name ? product.name.toLowerCase() : '';
-                const productCode = product.sno ? product.sno.toLowerCase() : '';
-                return productName.includes(searchTerm) || productCode.includes(searchTerm);
+                
+                return productName.includes(searchTerm);
               });
             }
       
@@ -1048,73 +1048,12 @@ drawPageBorder();
       
       
 
-  const handleSearch = (event) => {
-  const term = event.target.value.toLowerCase();
-  setSearchTerm(term);
-
-  setFilteredProducts(
-    products.filter(product => {
-      const productName = product.name ? product.name.toLowerCase() : '';
-      const productCode = product.sno !== undefined && product.sno !== null
-        ? product.sno.toString().toLowerCase()
-        : '';
-      return productName.includes(term) || productCode.includes(term);
-    })
-  );
-};
-        // const addToCart = (product) => {
-        //   const existingItem = cart.find(item => item.productId === product.id);
-        //   if (existingItem) {
-        //     const updatedCart = cart.map(item =>
-        //       item.productId === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        //     );
-        //     setCart(updatedCart);
-        //     updateBillingDetails(updatedCart);
-        //   } else {
-        //     const newItem = {
-        //       productId: product.id,
-        //       name: product.name,
-        //       saleprice: product.saleprice,
-        //       quantity: 1,
-        //     };
-        //     const updatedCart = [...cart, newItem];
-        //     setCart(updatedCart);
-        //     updateBillingDetails(updatedCart);
-        //   }
-        // };
-        // const addToCart = (product) => {
-        //   const existingItem = cart.find(item => item.productId === product.id);
-        //   let price = product.saleprice;
-        
-        //   // Check if this is the specific product that requires manual price entry
-        //   if (product.name === 'Assorted Crackers') {
-        //     price = prompt(`Enter price for ${product.name}:`);
-        //     if (!price) {
-        //       alert("Price is required.");
-        //       return;
-        //     }
-        //     price = parseFloat(price); // Convert the input to a float number
-        //   }
-        
-        //   if (existingItem) {
-        //     const updatedCart = cart.map(item =>
-        //       item.productId === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        //     );
-        //     setCart(updatedCart);
-        //     updateBillingDetails(updatedCart);
-        //   } else {
-        //     const newItem = {
-        //       productId: product.id,
-        //       name: product.name,
-        //       saleprice: price,
-        //       quantity: 1,
-        //     };
-        //     const updatedCart = [...cart, newItem];
-        //     setCart(updatedCart);
-        //     updateBillingDetails(updatedCart);
-        //   }
-        // };
-        
+      const handleSearch = (e) => {
+        setSearchTerm(e.target.value);
+      };
+      
+      
+       
         const addToCart = (product) => {
           let productName = product.name;
           let price = product.saleprice;
