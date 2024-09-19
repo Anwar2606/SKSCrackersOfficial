@@ -1138,7 +1138,7 @@ drawPageBorder();
               <option value="MATCH BOX">MATCH BOX</option>
               <option value="GIFT BOX">GIFT BOX</option>
       </select>
-              <ul>
+              {/* <ul>
                 {filteredProducts.map(product => (
                   <li key={product.id}>
                     <div className="product-details">
@@ -1149,7 +1149,23 @@ drawPageBorder();
                     <button onClick={() => addToCart(product)}>Add to Cart</button>
                   </li>
                 ))}
-              </ul>
+              </ul> */}
+<ul>
+  {filteredProducts
+    .sort((a, b) => Number(a.sno) - Number(b.sno)) // Convert `sno` to number for sorting
+    .map(product => (
+      <li key={product.id}>
+        <div className="product-details">
+          <span>{product.name}</span>
+          <span>{` (Sales Rs. ${product.saleprice ? product.saleprice.toFixed(2) : '0.00'})`}</span>
+        </div>
+        <button onClick={() => addToCart(product)}>Add to Cart</button>
+      </li>
+    ))}
+</ul>
+
+
+
             </div>
             <div className="cart">
               <h2>Cart</h2>
