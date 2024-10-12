@@ -31,6 +31,50 @@ const BulkUpload = () => {
     reader.readAsBinaryString(file);
   };
 
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  
+  //   const productCollection = collection(db, "products");
+  
+  //   for (const product of products) {
+  //     // Debugging: Log the product data
+  //     console.log("Processing product:", product);
+  
+  //     // Check if product.name is a string
+  //     if (typeof product.name !== 'string') {
+  //       console.error("Invalid product name:", product.name);
+  //       continue; // Skip this product if the name is not a string
+  //     }
+  
+  //     if (!product.name || !product.saleprice || !product.regularprice) {
+  //       console.error("Missing field(s) in product: ", product);
+  //       continue;
+  //     }
+  
+  //     const productData = {
+  //       sno: product.sno,
+  //       name: product.name.trim(),
+  //       saleprice: parseInt(product.saleprice),
+  //       regularprice: parseInt(product.regularprice),
+  //       category: product.category
+  //     };
+  
+  //     if (isNaN(productData.saleprice) || isNaN(productData.regularprice)) {
+  //       console.error("Invalid price or quantity for product:", product);
+  //       continue;
+  //     }
+  
+  //     try {
+  //       await addDoc(productCollection, productData);
+  //     } catch (error) {
+  //       console.error("Error adding document: ", error);
+  //     }
+  //   }
+  
+  //   setProducts([]);
+  //   setFileName("");
+  //   setUploadProgress(0);
+  // };
   const handleSubmit = async (event) => {
     event.preventDefault();
   
@@ -51,16 +95,17 @@ const BulkUpload = () => {
         continue;
       }
   
+      // Use parseFloat instead of parseInt to preserve decimal values
       const productData = {
         sno: product.sno,
         name: product.name.trim(),
-        saleprice: parseInt(product.saleprice),
-        regularprice: parseInt(product.regularprice),
+        saleprice: parseFloat(product.saleprice),  // Changed to parseFloat
+        regularprice: parseFloat(product.regularprice),  // Changed to parseFloat
         category: product.category
       };
   
       if (isNaN(productData.saleprice) || isNaN(productData.regularprice)) {
-        console.error("Invalid price or quantity for product:", product);
+        console.error("Invalid price for product:", product);
         continue;
       }
   
@@ -75,7 +120,7 @@ const BulkUpload = () => {
     setFileName("");
     setUploadProgress(0);
   };
-  
+   
   const handleDragOver = (event) => {
     event.preventDefault();
     setDragging(true);

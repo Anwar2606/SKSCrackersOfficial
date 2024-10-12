@@ -305,7 +305,7 @@ const downloadPDF = () => {
           <i className="fa fa-download"></i> Download PDF
         </button>
       </div>
-      <ul className="product-list">
+      {/* <ul className="product-list">
         {filteredProducts.map((product) => (
           <li key={product.id} className="product-item">
             <input
@@ -336,7 +336,56 @@ const downloadPDF = () => {
             </div>
           </li>
         ))}
-      </ul>
+      </ul> */}
+      <ul className="product-list">
+  {filteredProducts
+    .sort((a, b) => Number(a.sno) - Number(b.sno)) // Sort products by sno in ascending order
+    .map((product) => (
+      <li key={product.id} className="product-item">
+        {/* Checkbox for selecting products */}
+        <input
+          type="checkbox"
+          className="product-checkbox"
+          checked={selectedProducts.includes(product.id)}
+          onChange={(event) => handleSelectProduct(event, product.id)}
+        />
+
+        {/* Product info with description toggle */}
+        <div className="product-info" onClick={() => toggleDescription(product.id)}>
+          <div className="products-details">
+            {/* Product name */}
+            <div className="product-name">{product.name}</div>
+
+            {/* Conditionally render product description */}
+            {product.expanded && (
+              <div className="product-description">{product.description}</div>
+            )}
+
+            {/* Regular and sales prices */}
+            <div className="product-price">
+              Regular price: Rs. {product.regularprice.toFixed(2)}
+            </div>
+            <div className="product-price">
+              Sales price: Rs. {product.saleprice.toFixed(2)}
+            </div>
+          </div>
+        </div>
+
+        {/* Action buttons for editing and deleting */}
+        <div className="product-actions">
+          <Link to={`/edit-product/${product.id}`}>
+            <button className="edit-button">
+              <i className="fas fa-edit"></i> Edit
+            </button>
+          </Link>
+          <button className="delete-button" onClick={(event) => deleteProduct(product.id, event)}>
+            <i className="fas fa-trash-alt"></i> Delete
+          </button>
+        </div>
+      </li>
+    ))}
+</ul>
+
     </div>
   );
 };
